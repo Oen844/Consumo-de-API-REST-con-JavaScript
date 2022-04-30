@@ -1,0 +1,24 @@
+const url = "https://api.thecatapi.com/v1/images/search";
+const button = document.querySelector("button");
+const img = document.querySelector("img"); // getting the image element
+
+
+const createImg = () => {
+  fetch(url) // fetching the data from the API
+    .then((response) => response.json()) // converting the data to JSON
+    .then((data) => {
+      console.log(data); // logging the data
+      const cat = data[0].url; // getting the first cat from the array
+      console.log(cat); // logging the cat
+      img.setAttribute("src", cat); // setting the image source
+    });
+};
+createImg();    
+
+const change = () => {
+  console.log("button clicked");
+  img.removeAttribute("src"); // removing the image source
+  createImg();
+};
+
+button.addEventListener("click", change);
