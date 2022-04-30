@@ -1,4 +1,8 @@
-const url = "https://api.thecatapi.com/v1/images/search?limit=3";
+import Apikey from "./env.js";
+const url = "https://api.thecatapi.com/v1/images/search?limit=3&api_key="+Apikey;
+const button = document.querySelector("button");
+console.log(button)
+
 
 async function reload() {
   const response = await fetch(url);
@@ -15,3 +19,4 @@ async function reload() {
 }
 
 reload();
+button.addEventListener("click", reload());
